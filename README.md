@@ -1,2 +1,2 @@
-# tic-tac-toe-backend
+# tic-tac-toe-api
 Practice API for extending ReactJS tutorial
