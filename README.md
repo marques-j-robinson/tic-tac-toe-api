@@ -9,12 +9,12 @@ Practice API for extending ReactJS tutorial.
 **NOTE: History is saved in the DB and returned by the API as a string.**
 
 ## Usage
-1) Create and activate a virtual environment
-1) Run:
+- Create and activate a virtual environment
+- Run:
 ```sh
 pip install -r requirements.txt
 ```
-1) Start Server:
+- Start Server:
 ```sh
 flask run
 ```
