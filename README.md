@@ -24,7 +24,7 @@ List of available endpoints and their responses.
 Game:
 ```json
 {
-	"id": 156764174, // Randomly generated number
+	"id": 156764174,
 	"history": "some history about this game...",
 	"timestamp": "2023-02-13 07:29:58.797138" // The time game was saved
 }
@@ -42,7 +42,7 @@ Request:
 Response:
 ```json
 {
-	"res": [ // List of all games
+	"res": [
 		{
 			"id": 156764174,
 			"history": "some history about this game...",
@@ -66,7 +66,7 @@ Request:
 Response (Successful):
 ```json
 {
-	"res": { // Single Game
+	"res": {
 		"id": 156764174,
 		"history": "some history about this game...",
 		"timestamp": "2023-02-13 07:29:58.797138"
@@ -155,7 +155,7 @@ Request:
 Response:
 ```json
 {
-	"res": [], // List of all games
+	"res": [],
 	"status": "200",
 	"msg": "Success deleting game by ID!👍😀"
 }
