@@ -26,7 +26,7 @@ Game:
 {
 	"id": 156764174,
 	"history": "some history about this game...",
-	"timestamp": "2023-02-13 07:29:58.797138" // The time game was saved
+	"timestamp": "The time game was saved"
 }
 ```
 
@@ -46,7 +46,7 @@ Response:
 		{
 			"id": 156764174,
 			"history": "some history about this game...",
-			"timestamp": "2023-02-13 07:29:58.797138"
+			"timestamp": "The time game was saved"
 		}
 	],
 	"status": "200",
@@ -69,7 +69,7 @@ Response (Successful):
 	"res": {
 		"id": 156764174,
 		"history": "some history about this game...",
-		"timestamp": "2023-02-13 07:29:58.797138"
+		"timestamp": "The time game was saved"
 	},
 	"status": "200",
 	"msg": "Success getting game by ID!👍😀"
@@ -102,7 +102,7 @@ Response:
 	"res": {
 		"id": 156764174,
 		"history": "some history about this game...",
-		"timestamp": "2023-02-13 07:29:58.797138"
+		"timestamp": "The time game was saved"
 
 	},
 	"status": "200",
@@ -128,7 +128,7 @@ Response (Successful):
 	"res": {
 		"id": 156764174,
 		"history": "more history about this game...",
-		"timestamp": "2023-02-13 07:29:58.797138"
+		"timestamp": "The time game was saved"
 	},
 	"status": "200",
 	"msg": "Success updating game with id 156764174!👍😀"
