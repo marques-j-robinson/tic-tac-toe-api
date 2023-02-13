@@ -4,9 +4,9 @@ Practice API for extending ReactJS tutorial.
 ## Features
 - CRUD actions for games allowing multiple games to be saved
 - Keeps a history of moves throughout a game
+- Stores timestamp data for sorting games by most recently played
 
 **NOTE: History is saved in the DB and returned by the API as a string.**
-- Stores timestamp data for sorting games by most recently played
 
 ## Usage
 1) Create and activate a virtual environment
