@@ -28,7 +28,9 @@ app.post("/games", (request, response) => {
     }
     const {name} = request.body
     db.query("INSERT INTO game (name) VAlUE (?)", name, (err, result) => {
-        response.send({"success": true})
+        db.query("SELECT * FROM game", (selectErr, games) => {
+            response.send({"success": true, "games": games})
+        })
     })
 })
 
