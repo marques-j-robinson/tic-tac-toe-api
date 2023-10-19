@@ -1,11 +1,16 @@
 const express = require('express')
-const cors = require('cors')
+const config = require('config')
 const db = require('./db.js')
 
 const app = express()
-app.use(cors({origin: "http://localhost:3000"}))
 app.use(express.json())
 app.set('json spaces', 40)
+
+const {isDev, origin} = config.get('TicTacToe.env')
+if (isDev) {
+    const cors = require('cors')
+    app.use(cors({origin}))
+}
 
 app.get("/status", (request, response) => {
     const status = {

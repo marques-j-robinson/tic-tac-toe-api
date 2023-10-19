@@ -1,6 +1,9 @@
 {
     "TicTacToe": {
-        "isDev": "test",
+        "env": {
+            "isDev": "test",
+            "origin": "test"
+        },
         "dbConfig": {
             "host": "test",
             "port": "test",
