@@ -5,8 +5,6 @@ const games = require('./routers/gamesrouter.js')
 const game = require('./routers/gamerouter.js')
 
 const app = express()
-app.use(express.json())
-app.set('json spaces', 40)
 
 const {isDev, origin} = config.get('TicTacToe.env')
 if (isDev) {
@@ -14,6 +12,10 @@ if (isDev) {
     app.use(cors({origin}))
 }
 
+app.use(express.json())
+app.set('json spaces', 40)
+
+// Routers
 app.use(games)
 app.use(game)
 
