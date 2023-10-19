@@ -24,6 +24,7 @@ app.get("/games", (request, response) => {
         if (err) throw err
         con.query("SELECT * FROM game", function (err, result) {
             if (err) throw err
+            con.release()
             response.send(result)
         })
     })
@@ -37,6 +38,7 @@ app.post("/games", (request, response) => {
     pool.getConnection((err, con) => {
         con.query("INSERT INTO game (name) VAlUE (?)", request.body.name, (err, result) => {
             if (err) throw err
+            con.release()
             response.send({"success": true})
         })
     })
@@ -46,6 +48,7 @@ app.delete("/game/:id", (request, response) => {
     pool.getConnection((err, con) => {
         con.query("DELETE FROM game WHERE game_id = ?", request.params.id, (err, result) => {
             if (err) throw err
+            con.release()
             response.send({"success": true})
         })
     })
