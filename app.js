@@ -2,7 +2,6 @@ const express = require('express')
 const config = require('config')
 const db = require('./db.js')
 const games = require('./routers/gamesrouter.js')
-const game = require('./routers/gamerouter.js')
 
 const app = express()
 
@@ -17,7 +16,6 @@ app.set('json spaces', 40)
 
 // Routers
 app.use(games)
-app.use(game)
 
 const PORT = process.env.PORT || 5000
 
