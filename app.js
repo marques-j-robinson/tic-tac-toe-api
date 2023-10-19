@@ -1,6 +1,5 @@
 const express = require('express')
 const config = require('config')
-const db = require('./db.js')
 const games = require('./routers/gamesrouter.js')
 
 const app = express()
