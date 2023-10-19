@@ -36,7 +36,13 @@ app.post("/games", (request, response) => {
 
 app.delete("/game/:id", (request, response) => {
     db.query("DELETE FROM game WHERE game_id = ?", request.params.id, (err, result) => {
-        response.send({"success": true})
+        if (err) {
+            response.status(500).send({"success": false, "msg": "server error"})
+            return
+        }
+        db.query("SELECT * FROM game", (selectErr, games) => {
+            response.send({"success": true, "games": games})
+        })
     })
 })
 
