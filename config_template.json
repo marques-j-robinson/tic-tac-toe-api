@@ -1,0 +1,11 @@
+{
+    "TicTacToe": {
+        "dbConfig": {
+            "host": "test",
+            "port": "test",
+            "user": "test",
+            "password": "test",
+            "database": "test"
+        }
+    }
+}
