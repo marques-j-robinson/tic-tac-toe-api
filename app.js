@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const mysql = require('mysql')
 const config = require('config')
 
@@ -6,6 +7,7 @@ const dbConfig = config.get('TicTacToe.dbConfig')
 const pool = mysql.createPool(dbConfig)
 
 const app = express()
+app.use(cors({origin: "http://localhost:3000"}))
 app.use(express.json())
 app.set('json spaces', 40)
 
