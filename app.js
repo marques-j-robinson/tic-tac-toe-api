@@ -35,7 +35,16 @@ app.post("/games", (request, response) => {
     pool.getConnection((err, con) => {
         con.query("INSERT INTO game (name) VAlUE (?)", request.body.name, (err, result) => {
             if (err) throw err
-            response.send("Success")
+            response.send({"success": true})
+        })
+    })
+})
+
+app.delete("/game/:id", (request, response) => {
+    pool.getConnection((err, con) => {
+        con.query("DELETE FROM game WHERE game_id = ?", request.params.id, (err, result) => {
+            if (err) throw err
+            response.send({"success": true})
         })
     })
 })
