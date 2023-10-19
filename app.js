@@ -1,6 +1,8 @@
 const express = require('express')
 const config = require('config')
 const db = require('./db.js')
+const games = require('./routers/gamesrouter.js')
+const game = require('./routers/gamerouter.js')
 
 const app = express()
 app.use(express.json())
@@ -12,44 +14,8 @@ if (isDev) {
     app.use(cors({origin}))
 }
 
-app.get("/status", (request, response) => {
-    const status = {
-       "Status": "Running"
-    }
-    
-    response.send(status)
-})
-
-app.get("/games", (request, response) => {
-    db.query("SELECT * FROM game", function (err, result) {
-        response.send(result)
-    })
-})
-
-app.post("/games", (request, response) => {
-    if (!request.body.name) {
-        response.status(400).send("Parameter 'name' is missing from request body!")
-        return
-    }
-    const {name} = request.body
-    db.query("INSERT INTO game (name) VAlUE (?)", name, (err, result) => {
-        db.query("SELECT * FROM game", (selectErr, games) => {
-            response.send({"success": true, "games": games})
-        })
-    })
-})
-
-app.delete("/game/:id", (request, response) => {
-    db.query("DELETE FROM game WHERE game_id = ?", request.params.id, (err, result) => {
-        if (err) {
-            response.status(500).send({"success": false, "msg": "server error"})
-            return
-        }
-        db.query("SELECT * FROM game", (selectErr, games) => {
-            response.send({"success": true, "games": games})
-        })
-    })
-})
+app.use(games)
+app.use(game)
 
 const PORT = process.env.PORT || 5000
 
