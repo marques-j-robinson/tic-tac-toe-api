@@ -7,6 +7,7 @@ const pool = mysql.createPool(dbConfig)
 
 const app = express()
 app.use(express.json())
+app.set('json spaces', 40)
 
 app.get("/status", (request, response) => {
     const status = {
@@ -19,11 +20,22 @@ app.get("/status", (request, response) => {
 app.get("/games", (request, response) => {
     pool.getConnection(function(err, con) {
         if (err) throw err
-        console.log("Connected!")
         con.query("SELECT * FROM game", function (err, result) {
             if (err) throw err
-            console.log("Result: " + result)
             response.send(result)
+        })
+    })
+})
+
+app.post("/games", (request, response) => {
+    if (!request.body.name) {
+        response.status(400).send("Parameter 'name' is missing from request body!")
+        return
+    }
+    pool.getConnection((err, con) => {
+        con.query("INSERT INTO game (name) VAlUE (?)", request.body.name, (err, result) => {
+            if (err) throw err
+            response.send("Success")
         })
     })
 })
