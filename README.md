@@ -24,3 +24,12 @@ WARNING: See https://github.com/node-config/node-config/wiki/Strict-Mode
 Server Listening on PORT: 5000
 Database connected successfully!!
 ```
+
+## Endpoints
+### GET /games
+Returns a single game if provided `gameId` as a query param or returns all games if no query params are found in the request.
+### POST /games
+Creates a single game and returns a list of all the games.
+**Note** *name* is a required item in the request body.
+### DELETE /games/:gameId
+Removes a game by *gameId* and returns the updated list of all the games.
