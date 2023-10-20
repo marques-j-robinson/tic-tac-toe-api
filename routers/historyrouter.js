@@ -1,6 +1,6 @@
 const { Router } = require('express')
 const { getSingle } = require('../models/game.js')
-const { getAll, addNewMove } = require('../models/history.js')
+const { getAll, addNewMove, remove } = require('../models/history.js')
 const app = Router()
 
 app.get("/history", async (req, res) => {

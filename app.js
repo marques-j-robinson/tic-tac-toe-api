@@ -1,7 +1,7 @@
 const express = require('express')
 const config = require('config')
-const games = require('./routers/gamesrouter.js')
-const gameHistory = require('./routers/historyrouter.js')
+const ErrorHandler = require('./middlewares/ErrorHandler.js')
+const { getAll: getAllGames } = require('./models/games.js')
 
 const app = express()
 
@@ -14,9 +14,21 @@ if (isDev) {
 app.use(express.json())
 app.set('json spaces', 40)
 
-// Routers
-app.use(games)
-app.use(gameHistory)
+// Routes
+app.get('/games', async (req, res, next) => {
+    try {
+        const games = await getAllGames()
+        return res.send({
+            success: true,
+            data: { games }
+        })
+    } catch (err) {
+        next(err)
+    }
+})
+
+// ERROR HANDLER MIDDLEWARE
+app.use(ErrorHandler)
 
 const PORT = process.env.PORT || 5000
 
