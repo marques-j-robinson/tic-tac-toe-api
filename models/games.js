@@ -6,6 +6,7 @@ const selectAll = "SELECT * FROM game"
 export const getGame = async gameId => {
     const games = await db.query(`${selectAll} WHERE game_id = ?`, gameId)
     const game = single(games)
+    if (!game) throw Error('GAME_NOT_FOUND')
     const history = await db.query('SELECT * FROM game_history WHERE game_id = ?', gameId)
     game['history'] = history
     return game

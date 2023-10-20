@@ -5,6 +5,7 @@ const {
     create: createGame,
     getAll: getAllGames,
     getGame,
+    remove: removeGame,
 } = require('./models/games.js')
 
 const app = express()
@@ -48,11 +49,20 @@ app.get('/game/:id', async (req, res, next) => {
     try {
         const {id} = req.params
         const game = await getGame(id)
-        if (!game) throw Error('GAME_NOT_FOUND')
         return res.send({
             success: true,
             data: { game }
         })
+    } catch (err) {
+        next(err)
+    }
+})
+
+app.delete('/game/:id', async (req, res, next) => {
+    try {
+        const {id} = req.params
+        await removeGame(id)
+        return res.send({ success: true })
     } catch (err) {
         next(err)
     }
