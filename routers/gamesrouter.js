@@ -1,6 +1,4 @@
 const { Router } = require('express')
-const res = require('express/lib/response')
-const db = require('../db.js')
 const { getSingle, getAll, create, remove } = require('../models/game.js')
 const app = Router()
 
