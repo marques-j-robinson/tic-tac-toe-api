@@ -1,5 +1,4 @@
 const {db, single} = require('../db.js')
-const { remove: removeHistory } = require('./history.js')
 
 const selectAll = "SELECT * FROM game"
 
@@ -18,6 +17,10 @@ export const getAll = async () => {
 
 export const create = async name => {
     return db.query("INSERT INTO game (name) VALUE (?)", name)
+}
+
+const removeHistory = async gameId => {
+    return db.query("DELETE FROM game_history WHERE game_id = ?", gameId)
 }
 
 export const remove = async gameId => {
