@@ -1,7 +1,10 @@
 const express = require('express')
 const config = require('config')
 const ErrorHandler = require('./middlewares/ErrorHandler.js')
-const { getAll: getAllGames } = require('./models/games.js')
+const {
+    getAll: getAllGames,
+    create: createGame,
+} = require('./models/games.js')
 
 const app = express()
 
@@ -21,6 +24,19 @@ app.get('/games', async (req, res, next) => {
         return res.send({
             success: true,
             data: { games }
+        })
+    } catch (err) {
+        next(err)
+    }
+})
+
+app.post('/game', async (req, res, next) => {
+    try {
+        if (!req.body.name) throw Error('MISSING_NAME')
+        const {insertId:id} = await createGame(req.body.name)
+        return res.send({
+            success: true,
+            data: { id }
         })
     } catch (err) {
         next(err)

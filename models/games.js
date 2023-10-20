@@ -12,8 +12,7 @@ export const getAll = async () => {
 }
 
 export const create = async name => {
-    await db.query("INSERT INTO game (name) VALUE (?)", name)
-    return getAll()
+    return db.query("INSERT INTO game (name) VALUE (?)", name)
 }
 
 export const remove = async gameId => {
