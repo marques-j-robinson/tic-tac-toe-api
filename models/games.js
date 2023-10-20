@@ -25,8 +25,7 @@ const removeHistory = async gameId => {
 
 export const remove = async gameId => {
     await removeHistory(gameId)
-    await db.query("DELETE FROM game WHERE game_id = ?", gameId)
-    return getAll()
+    return db.query("DELETE FROM game WHERE game_id = ?", gameId)
 }
 
 export const update = async (gameId, history) => {
