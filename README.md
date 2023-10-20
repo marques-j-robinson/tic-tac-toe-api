@@ -31,7 +31,6 @@ Database connected successfully!!
 Provides a list of all games.
 ### POST /game
 Creates a single game and returns the id of the newly created game.
-**Note** *name* is a required item in the request body.
 ### GET /game/:id
 Provides the history for a given game by id.
 ### DELETE /game/:id

@@ -15,8 +15,8 @@ export const getAll = async () => {
     return db.query(selectAll)
 }
 
-export const create = async name => {
-    return db.query("INSERT INTO game (name) VALUE (?)", name)
+export const create = async () => {
+    return db.query("INSERT INTO game (game_id) VALUE (NULL)")
 }
 
 const removeHistory = async gameId => {

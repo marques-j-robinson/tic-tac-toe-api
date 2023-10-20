@@ -35,8 +35,7 @@ app.get('/games', async (req, res, next) => {
 
 app.post('/game', async (req, res, next) => {
     try {
-        if (!req.body.name) throw Error('MISSING_NAME')
-        const {insertId:id} = await createGame(req.body.name)
+        const {insertId:id} = await createGame()
         return res.send({
             success: true,
             data: { id }
