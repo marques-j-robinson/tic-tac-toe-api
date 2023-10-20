@@ -3,8 +3,12 @@ const { remove: removeHistory } = require('./history.js')
 
 const selectAll = "SELECT * FROM game"
 
-export const getSingle = async gameId => {
-    return single(await db.query(`${selectAll} WHERE game_id = ?`, gameId))
+export const getGame = async gameId => {
+    const games = await db.query(`${selectAll} WHERE game_id = ?`, gameId)
+    const game = single(games)
+    const history = await db.query('SELECT * FROM game_history WHERE game_id = ?', gameId)
+    game['history'] = history
+    return game
 }
 
 export const getAll = async () => {

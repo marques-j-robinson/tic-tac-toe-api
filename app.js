@@ -2,8 +2,9 @@ const express = require('express')
 const config = require('config')
 const ErrorHandler = require('./middlewares/ErrorHandler.js')
 const {
-    getAll: getAllGames,
     create: createGame,
+    getAll: getAllGames,
+    getGame,
 } = require('./models/games.js')
 
 const app = express()
@@ -37,6 +38,20 @@ app.post('/game', async (req, res, next) => {
         return res.send({
             success: true,
             data: { id }
+        })
+    } catch (err) {
+        next(err)
+    }
+})
+
+app.get('/game/:id', async (req, res, next) => {
+    try {
+        const {id} = req.params
+        const game = await getGame(id)
+        if (!game) throw Error('GAME_NOT_FOUND')
+        return res.send({
+            success: true,
+            data: { game }
         })
     } catch (err) {
         next(err)
