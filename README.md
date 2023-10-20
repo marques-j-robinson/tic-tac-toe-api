@@ -28,13 +28,13 @@ Database connected successfully!!
 
 ## Endpoints
 ### GET /games
-Returns a single game if provided `gameId` as a query param or returns all games if no query params are found in the request.
-### POST /games
-Creates a single game and returns a list of all the games.
+Provides a list of all games.
+### POST /game
+Creates a single game and returns the id of the newly created game.
 **Note** *name* is a required item in the request body.
-### DELETE /games/:gameId
-Removes a game and all history by *gameId* and returns the updated list of all the games.
-### GET /history/:gameId
-Returns the history for a given game.
-### POST /history/:gameId
-Saves a new move to the given game.
+### GET /game/:id
+Provides the history for a given game by id.
+### DELETE /game/:id
+Removes a game and all history by *id*.
+### PUT /game/:id
+Updates the history for a given game.
