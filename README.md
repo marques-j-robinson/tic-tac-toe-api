@@ -33,4 +33,8 @@ Returns a single game if provided `gameId` as a query param or returns all games
 Creates a single game and returns a list of all the games.
 **Note** *name* is a required item in the request body.
 ### DELETE /games/:gameId
-Removes a game by *gameId* and returns the updated list of all the games.
+Removes a game and all history by *gameId* and returns the updated list of all the games.
+### GET /history/:gameId
+Returns the history for a given game.
+### POST /history/:gameId
+Saves a new move to the given game.
