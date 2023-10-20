@@ -25,3 +25,11 @@ export const remove = async gameId => {
     await db.query("DELETE FROM game WHERE game_id = ?", gameId)
     return getAll()
 }
+
+export const update = async (gameId, history) => {
+    const sql = "INSERT IGNORE INTO game_history (game_id, row_id, col_id, value) VALUES ?"
+    const values = history.map(({rowId, colId, value}) => ([
+        gameId, rowId, colId, value
+    ]))
+    return db.query(sql, [values])
+}

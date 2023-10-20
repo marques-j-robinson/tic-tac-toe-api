@@ -6,6 +6,7 @@ const {
     getAll: getAllGames,
     getGame,
     remove: removeGame,
+    update: updateGameHistory,
 } = require('./models/games.js')
 
 const app = express()
@@ -63,6 +64,19 @@ app.delete('/game/:id', async (req, res, next) => {
         const {id} = req.params
         await removeGame(id)
         return res.send({ success: true })
+    } catch (err) {
+        next(err)
+    }
+})
+
+app.put('/game/:id', async (req, res, next) => {
+    try {
+        const {id} = req.params
+        const {affectedRows} = await updateGameHistory(id, req.body.history)
+        return res.send({
+            success: true,
+            data: {affectedRows}
+        })
     } catch (err) {
         next(err)
     }
