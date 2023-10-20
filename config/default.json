@@ -1,0 +1,12 @@
+{
+    "TicTacToe": {
+        "env": {
+            "isDev": true
+        },
+        "db": {
+            "host": "127.0.0.1",
+            "port": "3306",
+            "database": "tic_tac_toe"
+        }
+    }
+}

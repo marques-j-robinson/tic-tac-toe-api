@@ -1,7 +1,7 @@
 const util = require('util')
 const mysql = require('mysql')
 const config = require('config')
-const pool = mysql.createPool(config.get('TicTacToe.dbConfig'))
+const pool = mysql.createPool(config.get('TicTacToe.db'))
 
 // Ping database to check for common exception errors.
 pool.getConnection((err, connection) => {

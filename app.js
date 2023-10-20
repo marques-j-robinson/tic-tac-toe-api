@@ -4,10 +4,10 @@ const games = require('./routers/gamesrouter.js')
 
 const app = express()
 
-const {isDev, origin} = config.get('TicTacToe.env')
+const {isDev, frontendOrigin} = config.get('TicTacToe.env')
 if (isDev) {
     const cors = require('cors')
-    app.use(cors({origin}))
+    app.use(cors({origin: frontendOrigin}))
 }
 
 app.use(express.json())
