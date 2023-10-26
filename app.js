@@ -18,7 +18,7 @@ if (isDev) {
 }
 
 app.use(express.json())
-app.set('json spaces', 40)
+app.set('json spaces', 2)
 
 // Routes
 app.get('/games', async (req, res, next) => {
