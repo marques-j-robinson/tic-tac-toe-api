@@ -1,4 +1,4 @@
-const {db, single} = require('../db.js')
+const {db, single} = require('./db.js')
 
 const selectAll = "SELECT * FROM game"
 
