@@ -7,9 +7,9 @@ Follow the commands below to install this project and run for the first time:
 $ git clone https://github.com/marques-j-robinson/tic-tac-toe-api.git
 $ cd tic-tac-toe-api
 $ npm i # Install dependencies
-$ cp config/default.json config/local.json # Copy config file and add frontendOrigin in "env" and user/password in "db" 
+$ cp config/default.json config/local.json # Copy config file and add frontendOrigin in "env" and user/password in "db"
 $ export NODE_ENV=local
-$ npm run start # Start API
+$ npm run dev # Start API
 
 # EXPECTED OUTPUT...
 > tic-tac-toe-api@1.0.0 start
