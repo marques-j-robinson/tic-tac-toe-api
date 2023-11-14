@@ -3,6 +3,10 @@ const config = require('config')
 const ErrorHandler = require('./middlewares/ErrorHandler.js')
 const {
     create: createGame,
+    getAll: getAllGames,
+    getGame,
+    update: saveMoves,
+    removeHistory,
 } = require('./games.models.js')
 
 const app = express()
@@ -17,12 +21,29 @@ app.use(express.json())
 app.set('json spaces', 2)
 
 // Routes
-app.post('/game', async (req, res, next) => {
+app.get('/game/:id', async (req, res, next) => {
     try {
-        const {insertId:id} = await createGame()
+        const {id} = req.params
+        const {history} = await getGame(id)
+        console.log(history)
         return res.send({
             success: true,
-            data: { id }
+            game: {
+                id,
+                history,
+            }
+        })
+    } catch (err) {
+        next(err)
+    }
+})
+
+app.get('/games', async (req, res, next) => {
+    try {
+        const games = await getAllGames()
+        return res.send({
+            success: true,
+            games,
         })
     } catch (err) {
         next(err)
